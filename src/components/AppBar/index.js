@@ -6,9 +6,15 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuLogo from '../../public/images/mini-logo.png';
 import SignOutButton from '../SignOut';
+import * as ROUTES from "../../constants/routes";
+import { AuthUserContext } from '../Session';
 
-const Appbar = ({ authUser }) => (
-    <div>{authUser ? <AuthBar /> : <NonAuthBar />}</div>
+const Appbar = () => (
+    <AuthUserContext.Consumer>
+        {authUser =>
+            authUser ? <AuthBar /> : <NonAuthBar />
+        }
+    </AuthUserContext.Consumer>
 );
 
 const AuthBar = () => (
@@ -37,7 +43,8 @@ const NonAuthBar = () => (
                 <Typography variant="title" color="inherit">
                     Nothing App
                 </Typography>
-                <Button color="inherit">Login</Button>
+                <Button color="inherit" href={ROUTES.SIGN_IN}>Login</Button>
+                <Button color="inherit" href={ROUTES.SIGN_UP}>Sign Up</Button>
             </Toolbar>
         </AppBar>
     </>

@@ -12,6 +12,7 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import Appbar from '../AppBar';
 import { withFirebase } from '../Firebase';
+import { AuthUserContext } from '../Session';
 
 import * as ROUTES from '../../constants/routes';
 
@@ -40,8 +41,9 @@ class App extends React.Component {
     render() {
         return (
             <>
-                <Appbar authUser={this.state.authUser}/>
+                <AuthUserContext.Provider value={this.state.authUser}>
                 <Router>
+                    <Appbar />
                     <div>
                         <Route exact path={ROUTES.LANDING} component={LandingPage}/>
                         <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
@@ -52,6 +54,7 @@ class App extends React.Component {
                         <Route path={ROUTES.ADMIN} component={AdminPage}/>
                     </div>
                 </Router>
+                </AuthUserContext.Provider>
             </>
         );
     }
