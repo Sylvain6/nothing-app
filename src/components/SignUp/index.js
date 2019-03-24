@@ -32,11 +32,19 @@ class SignUpFormBase extends Component {
     };
 
     onSubmit = event => {
-        const { username, email, passwordOne } = this.state;
+        const { username, email, passwordOne, roles } = this.state;
 
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
+                return this.props.firebase
+                    .user(authUser.user.uid)
+                    .set({
+                        username,
+                        email,
+                    });
+            })
+            .then(() => {
                 this.setState({ ...INITIAL_STATE });
                 this.props.history.push(ROUTES.HOME);
             })
@@ -53,6 +61,7 @@ class SignUpFormBase extends Component {
             email,
             passwordOne,
             passwordTwo,
+            roles,
             error,
         } = this.state;
 
@@ -63,7 +72,7 @@ class SignUpFormBase extends Component {
             username === '';
 
         return (
-            <div className="App">
+            <div className="App withAnimation">
                 <Grid container justify={"center"}>
                     <Grid>
                         <img src={nothing} alt="Nothing Logo" height="300" width="300"></img>

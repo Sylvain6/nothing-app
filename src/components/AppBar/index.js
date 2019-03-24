@@ -27,6 +27,7 @@ const AuthBar = () => (
                 <Typography variant="title" color="inherit">
                     Nothing App
                 </Typography>
+                <Button color="inherit" href={ROUTES.ACCOUNT}>My Account</Button>
                 <SignOutButton/>
             </Toolbar>
         </AppBar>
