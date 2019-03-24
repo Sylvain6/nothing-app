@@ -19,7 +19,7 @@ const Appbar = () => (
 
 const AuthBar = () => (
     <>
-        <AppBar position="static" color='#B793E6'>
+        <AppBar position="static" color="default">
             <Toolbar>
                 <IconButton color="inherit" aria-label="Menu">
                     <img src={MenuLogo} width='50px' height='50px' />
@@ -35,7 +35,7 @@ const AuthBar = () => (
 
 const NonAuthBar = () => (
     <>
-        <AppBar position="static" color='#B793E6'>
+        <AppBar position="static" color='default'>
             <Toolbar>
                 <IconButton color="inherit" aria-label="Menu">
                     <img src={MenuLogo} width='50px' height='50px' />

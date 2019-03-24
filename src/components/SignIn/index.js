@@ -9,11 +9,16 @@ import Grid from "@material-ui/core/Grid/Grid";
 import nothing from "../../public/images/logo.png";
 import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button";
+import {PasswordForgetForm, PasswordForgetLink} from "../PasswordForget";
 
 const SignInPage = () => (
     <div>
         <SignInForm />
-
+        <Grid container justify={"center"}>
+            <Grid item xs={5}>
+                <PasswordForgetLink />
+            </Grid>
+        </Grid>
         <Grid container justify={"center"}>
             <Grid>
                 <SignUpLink />
